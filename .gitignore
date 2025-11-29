@@ -1,0 +1,5 @@
+Model_T5_Final/
+__pycache__/
+*.pt
+*.bin
+*.safetensors
