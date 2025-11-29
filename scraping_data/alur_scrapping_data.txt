@@ -1,0 +1,11 @@
+dalam proses melakukan scrapping data ada beberapa langkah yang perlu dilakukan
+
+1. perhatikan kumpulan link dari berita liputan6 yang sudah tersimpan di file url.json
+dalam file ini ada sekitar +- 193.000 data berita bagian training, 10.000 +- data berita bagian testing dan 10.000 +- data bagian validation
+
+2. script about_urls, bisa digunakan untuk mengetahui isi dari data nya, ada berapa banyak data trainingnya (train_urls), data testingnya (test_urls) dan data validationnya (val_urls).
+
+3.jika sudah siap untuk melakukan scrapping,maka jalankan file 0_download.py, dalam script di file ini, silahkan tentukan mau ambil berpaa data, bisa 1000, 5000, 10000 bisa ditentukan sendiri
+nantinya,akan mendapatkan folder raw yang berisi ribuan file json, atau total data yang di scrap, dan ini belum dilakukan pembersihan
+
+4. jika sudah berhasil mendapatkan folder raw, yang berisi banyak file json, lanjutkan ke menjalankan 1_preprocessing.py, untuk dilakukan pembersihan,dan data dapat digunakan untuk process selanjutnya.
