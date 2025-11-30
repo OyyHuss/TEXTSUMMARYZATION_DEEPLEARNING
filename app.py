@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 # --- CONFIG ---
 # Arahkan ke folder tempat Anda menaruh file model hasil download
-MODEL_PATH = "./model_final" 
+# Sesuaikan dengan nama folder di gambar Anda
+MODEL_PATH = "./Model_T5_Final"
 
 print(f"Sedang memuat model dari {MODEL_PATH}...")
 try:
@@ -24,10 +25,11 @@ def ringkas_teks(teks):
     
     outputs = model.generate(
         inputs["input_ids"], 
-        max_length=128, 
-        min_length=30, 
-        length_penalty=2.0, 
-        num_beams=4, 
+        max_length=250,       # Naikkan sedikit
+        min_length=50,        # Paksa minimal 40 token (biar gak kependekan)
+        length_penalty=2.0,   # Memberi bobot lebih pada ringkasan yg agak panjang
+        num_beams=5,          # Naikkan beam search (opsi pencarian kata)
+        no_repeat_ngram_size=2, # <--- TAMBAHAN PENTING: Cegah pengulangan frasa
         early_stopping=True
     )
     return tokenizer.decode(outputs[0], skip_special_tokens=True)

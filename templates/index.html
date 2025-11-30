@@ -2,33 +2,117 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Demo TA - Peringkas Berita</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indo-Summarizer AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white text-center">
-                <h2>🤖 Aplikasi Peringkas Berita Otomatis</h2>
-                <p>Implementasi Deep Learning (Indo-T5)</p>
-            </div>
-            <div class="card-body">
-                <form method="POST">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Masukkan Artikel Berita:</label>
-                        <textarea class="form-control" name="berita" rows="6" placeholder="Paste teks berita di sini..." required>{{ original_text }}</textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success w-100">✨ Ringkas Sekarang</button>
-                </form>
+<body>
 
-                {% if summary %}
-                <div class="alert alert-success mt-4">
-                    <h4 class="alert-heading">Hasil Ringkasan:</h4>
-                    <p class="mb-0">{{ summary }}</p>
-                </div>
-                {% endif %}
+    <div class="glow-bg"></div>
+
+    <nav>
+        <div class="logo">
+            <i class="fas fa-robot" style="color: #6c63ff;"></i>
+            <span>SummarizerAI</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">Tentang</a>
+            <a href="#tech">Teknologi</a>
+            <a href="#app">Mulai Ringkas</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Peringkas Berita Otomatis <br> Berbasis Deep Learning</h1>
+        <p>Solusi cerdas untuk memahami inti berita panjang dalam hitungan detik menggunakan teknologi Natural Language Processing terkini.</p>
+        <div class="cta-buttons">
+            <a href="#app" class="btn-primary">Mulai Analisis</a>
+            <a href="#about" class="btn-secondary">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Tentang Aplikasi</h2>
+        <p style="color: #a0a0a0;">Platform ini dirancang untuk mendemonstrasikan kemampuan model Indo-T5.</p>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-bullseye"></i></div>
+                <h3>Tujuan</h3>
+                <p>Membantu pembaca mendapatkan informasi inti dari artikel berita tanpa harus membaca keseluruhan teks yang panjang.</p>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-brain"></i></div>
+                <h3>AI-Powered</h3>
+                <p>Menggunakan model Indo-T5 yang telah dilatih (Fine-Tuned) dengan 5.000 artikel berita Liputan6.</p>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                <h3>Efisien</h3>
+                <p>Memproses teks dalam hitungan detik dengan akurasi ROUGE Score yang kompetitif.</p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="tech" class="tech">
+        <h2>Teknologi</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="circle-icon">T5</div>
+                <h3>Indo-T5 Model</h3>
+                <p>Model sequence-to-sequence yang mampu memahami konteks bahasa Indonesia dengan sangat baik.</p>
+                <ul>
+                    <li>Transfer Learning</li>
+                    <li>Abstractive Summarization</li>
+                    <li>Fine-tuned pada 5k Data</li>
+                </ul>
+            </div>
+            
+            <div class="tech-card">
+                <div class="circle-icon">Py</div>
+                <h3>Tech Stack</h3>
+                <p>Dibangun menggunakan ekosistem Python modern untuk performa maksimal.</p>
+                <ul>
+                    <li>PyTorch Framework</li>
+                    <li>Hugging Face Transformers</li>
+                    <li>Flask Web Server</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="app" class="summarizer">
+        <div class="glass-panel">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <span style="background: rgba(108, 99, 255, 0.2); color: #8b85ff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">LIVE DEMO</span>
+                <h2 style="margin-top: 10px;">Masukkan Teks Berita</h2>
+            </div>
+
+            <form method="POST" action="/#app"> <div class="input-area">
+                    <textarea name="berita" rows="8" placeholder="Tempelkan artikel berita panjang di sini..." required>{{ original_text }}</textarea>
+                </div>
+                
+                <div class="action-btn">
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-magic"></i> &nbsp; Analisis Sekarang
+                    </button>
+                </div>
+            </form>
+
+            {% if summary %}
+            <div class="result-area">
+                <h4><i class="fas fa-check-circle"></i> Hasil Ringkasan AI:</h4>
+                <p class="result-text">{{ summary }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Tugas Akhir Deep Learning - Text Summaryzation Kelompok 4 <i class="fas fa-heart" style="color: #e25555;"></i></p>
+    </footer>
+
 </body>
 </html>
